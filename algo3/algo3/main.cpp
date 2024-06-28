@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
@@ -71,7 +71,7 @@ DynamicArr::~DynamicArr()
 	delete[] arr;
 }
 
-// Обход в ширину
+// РћР±С…РѕРґ РІ С€РёСЂРёРЅСѓ
 void breadth_first_search(Node* root) {
 	Node* list[SIZE], * list_n[SIZE];
 	for (int i = 0; i < SIZE; i++) 
@@ -250,7 +250,7 @@ void InsertAVL(Node* (&root), int data)
 	}
 }
 
-// Прямой обход дерева	
+// РџСЂСЏРјРѕР№ РѕР±С…РѕРґ РґРµСЂРµРІР°	
 void traversePreOrder(struct Node* temp, Stack* number_list) {
 	if (temp != NULL) {
 		cout << " " << temp->data;
@@ -260,7 +260,7 @@ void traversePreOrder(struct Node* temp, Stack* number_list) {
 	}
 }
 
-// Центрированный обход дерева
+// Р¦РµРЅС‚СЂРёСЂРѕРІР°РЅРЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР°
 void traverseInOrder(struct Node* temp) {
 	if (temp != NULL) {
 		traverseInOrder(temp->left);
@@ -269,7 +269,7 @@ void traverseInOrder(struct Node* temp) {
 	}
 }
 
-// Обратный обход дерева
+// РћР±СЂР°С‚РЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР°
 void traversePostOrder(struct Node* temp) {
 	if (temp != NULL) {
 		traversePostOrder(temp->left);
@@ -278,7 +278,7 @@ void traversePostOrder(struct Node* temp) {
 	}
 }
 
-// Построение двоичного дерева
+// РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРІРѕРёС‡РЅРѕРіРѕ РґРµСЂРµРІР°
 Node* Token(string tree_str, bool& flag, Node* root)
 {
 	Stack brackets{}, numbers{};
@@ -402,9 +402,9 @@ int main()
 	int n = 0; Stack number_list;
 	while (1)
 	{
-		cout << "Введите правильную скобочную последовательность: ";
+		cout << "Р’РІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅСѓСЋ СЃРєРѕР±РѕС‡РЅСѓСЋ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ: ";
 		cin >> tree_string;
-		// формируем дерево
+		// С„РѕСЂРјРёСЂСѓРµРј РґРµСЂРµРІРѕ
 		tree = Token(tree_string, flag, tree);
 		if (flag == 0)
 		{
@@ -416,8 +416,8 @@ int main()
 	}
 
 	system("cls");
-	cout << "Введённая скобочная последовательность: " << tree_string;
-	cout << "\n\nОбход двоичного дерева в глубину (КЛП, прямой): "; 
+	cout << "Р’РІРµРґС‘РЅРЅР°СЏ СЃРєРѕР±РѕС‡РЅР°СЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ: " << tree_string;
+	cout << "\n\nРћР±С…РѕРґ РґРІРѕРёС‡РЅРѕРіРѕ РґРµСЂРµРІР° РІ РіР»СѓР±РёРЅСѓ (РљР›Рџ, РїСЂСЏРјРѕР№): "; 
 	traversePreOrder(tree, &number_list);
 	Stack tmpStack;
 	reverseStack(&number_list, &tmpStack);
@@ -427,9 +427,9 @@ int main()
 		InsertAVL(avl_tree, stoi(number_list.peek()));
 		number_list.pop();
 	}
-	cout << "\n\nОбход АВЛ дерева в ширину: "; breadth_first_search(avl_tree);
-	cout << "\n\nОбход АВЛ дерева в глубину (ЛПК, обратный): "; traversePostOrder(avl_tree);
-	cout << "\n\nОбход АВЛ дерева в глубину (ЛКП, центрированный): "; traverseInOrder(avl_tree);
-	cout << "\n\nОбход АВЛ дерева в глубину (КЛП, прямой): "; traversePreOrder(avl_tree, &number_list); cout << endl;
+	cout << "\n\nРћР±С…РѕРґ РђР’Р› РґРµСЂРµРІР° РІ С€РёСЂРёРЅСѓ: "; breadth_first_search(avl_tree);
+	cout << "\n\nРћР±С…РѕРґ РђР’Р› РґРµСЂРµРІР° РІ РіР»СѓР±РёРЅСѓ (Р›РџРљ, РѕР±СЂР°С‚РЅС‹Р№): "; traversePostOrder(avl_tree);
+	cout << "\n\nРћР±С…РѕРґ РђР’Р› РґРµСЂРµРІР° РІ РіР»СѓР±РёРЅСѓ (Р›РљРџ, С†РµРЅС‚СЂРёСЂРѕРІР°РЅРЅС‹Р№): "; traverseInOrder(avl_tree);
+	cout << "\n\nРћР±С…РѕРґ РђР’Р› РґРµСЂРµРІР° РІ РіР»СѓР±РёРЅСѓ (РљР›Рџ, РїСЂСЏРјРѕР№): "; traversePreOrder(avl_tree, &number_list); cout << endl;
 	return 0;
 }

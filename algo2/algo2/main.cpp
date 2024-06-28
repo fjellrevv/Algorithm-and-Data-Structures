@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <conio.h>
 #include <stack>
 #include <vector>
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// сортировка вставкой
+// СЃРѕСЂС‚РёСЂРѕРІРєР° РІСЃС‚Р°РІРєРѕР№
 void insertionSort(vector<int>&arr)
 {
     int i, key, j;
@@ -29,7 +29,7 @@ int getMinrun(int n)
     int r = 0;           
     while (n >= 64) 
     {
-        r |= n & 1; // получаем младший бит числа n
+        r |= n & 1; // РїРѕР»СѓС‡Р°РµРј РјР»Р°РґС€РёР№ Р±РёС‚ С‡РёСЃР»Р° n
         n >>= 1;
     }
     return n + r;
@@ -59,11 +59,11 @@ vector<vector<int>> getRun(vector<int>arr, vector<vector<int>>runs, int minrun)
     return runs;
 }
 
-// слияние
+// СЃР»РёСЏРЅРёРµ
 vector<vector<int>> merge(vector<vector<int>>runs)
 {
     vector<vector<int>>pair;
-    int i = 0, j = -1, x = 0, y = 0, z = 0; // i - индекс подмассива, j = номер подмассива
+    int i = 0, j = -1, x = 0, y = 0, z = 0; // i - РёРЅРґРµРєСЃ РїРѕРґРјР°СЃСЃРёРІР°, j = РЅРѕРјРµСЂ РїРѕРґРјР°СЃСЃРёРІР°
 
     while (1)
     {
@@ -86,7 +86,7 @@ vector<vector<int>> merge(vector<vector<int>>runs)
 
         if (j > 0 && ((j == 1 && x <= y) || (j > 1 && (y <= z || x <= y + z))))
         {
-            // временный массив
+            // РІСЂРµРјРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ
             vector<int>temp; 
             if (j == 1)
             {
@@ -107,7 +107,7 @@ vector<vector<int>> merge(vector<vector<int>>runs)
                 }
             }
 
-            // проверка на убывание
+            // РїСЂРѕРІРµСЂРєР° РЅР° СѓР±С‹РІР°РЅРёРµ
             bool flag = 0;
             for (int k = 1; k < temp.size(); k++)
             {
@@ -119,11 +119,11 @@ vector<vector<int>> merge(vector<vector<int>>runs)
             }
             if (flag) reverse(temp.begin(), temp.end());
 
-            // галоп
+            // РіР°Р»РѕРї
             vector<int>merge_arr;
             int temp_x = 0, y_x = 0, cnt_temp_x = 0, cnt_y_x = 0, deg = 1;
 
-            // пока размер массива слияния не равен сумме двух массивов
+            // РїРѕРєР° СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР° СЃР»РёСЏРЅРёСЏ РЅРµ СЂР°РІРµРЅ СЃСѓРјРјРµ РґРІСѓС… РјР°СЃСЃРёРІРѕРІ
             while (merge_arr.size() != y + temp.size())
             {
                 if (y_x == y)
@@ -248,7 +248,7 @@ int main()
 
     system("cls"); 
     vec.clear(); str.clear(); tmp.clear();
-    cout << "Введите элементы последовательности через пробел и нажмите Enter: ";
+    cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚С‹ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё С‡РµСЂРµР· РїСЂРѕР±РµР» Рё РЅР°Р¶РјРёС‚Рµ Enter: ";
     while (str == "") getline(cin, str);
     if (str[str.length() - 1] != ' ') str += ' ';
     for (int i = 0; i < str.length(); i++)
@@ -263,7 +263,7 @@ int main()
 
     vec = TimSort(vec);
 
-    cout << "\nОтсортированный массив: ";
+    cout << "\nРћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ: ";
     for (int i = 0; i < vec.size(); i++)
     {
         cout << vec[i] << " ";
